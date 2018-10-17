@@ -1,5 +1,16 @@
 # Node summit 2018 redelivery
 
+Run slides local:
+
+Install nodejs+npm. Install git. Clone this library.
+
+```
+git clone https://github.com/nicojs/node-summit-2018-redelivery
+cd node-summit-2018-redelivery
+npm i
+npm start
+```
+
 Agenda:
 
 * **Nico** Introduction, context, setting about NodeJS and the summit
