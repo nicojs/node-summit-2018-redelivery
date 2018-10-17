@@ -6,13 +6,6 @@
 
 ---
 
-![jansen-end](/img/jansen-end.jpg)<!-- .element class="img-responsive img-flex" -->
-![john-end](/img/john-end.jpg)<!-- .element class="img-responsive img-flex" -->
-
-<!-- .element class="flex" -->
-
----
-
 <!-- .slide: data-autoslide="400"-->
 
 ![node-talk-1](/img/node-talk-1.jpg) <!-- .element class="fragment emblem logo-emblem" -->
