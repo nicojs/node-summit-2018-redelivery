@@ -1,7 +1,5 @@
 # NodeJS and HTTP2
 
-
-
 ---
 ### Talk by
 - James Snell
@@ -11,6 +9,14 @@
 ---
 # <img src="./img/http2.jpg" />
 
+---
+### What is HTTP/2
+Key characteristics
+- Binary Protocol
+- Multiplexing
+- Header Compression
+- Server Push
+<img src="./img/http2.jpg" />
 ---
 ### Hello HTTP/2
 ```js
