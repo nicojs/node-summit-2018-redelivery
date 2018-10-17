@@ -11,5 +11,6 @@
 * NodeJS for micro services
 * ES Modules
 * HTTP 2
-* Beyond JavaScript
+* NAPI
+* Web assembly
 * What's in it for Info Support?
