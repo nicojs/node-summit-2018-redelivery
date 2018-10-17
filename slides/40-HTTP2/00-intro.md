@@ -138,9 +138,16 @@ server.listen(8888);
 ---
 ### Setup
 
-> h2load -n 20000 -c 8 -t 8 -m 500 https://...
+```
+h2load -n 20000 -c 8 -t 8 -m 500 https://...
+```
 
-Command-line to perform benchmark to URI https://localhost using total 20000 requests, 8 concurrent clients 8 native threads and 500 max concurrent streams
+Command-line to perform benchmark to URI https://localhost
+
+* 20000 requests
+* 8 concurrent clients 
+* 8 native threads 
+* 500 max concurrent streams
 
 ---
 ### Results
@@ -153,8 +160,8 @@ Command-line to perform benchmark to URI https://localhost using total 20000 req
 Caveat: http2 uses more memory because of more buffering with multiplexing...
 
 ---
-### What about websockets?  
-- No websockets with http2 (upgrade header does not exists in http2)
+### What about web sockets?  
+- No web sockets with http2 (upgrade header does not exists in http2)
 
 but
 
@@ -180,15 +187,19 @@ wss.on('connection', (ws) => {
 })
 server.listen(8443)
 ```
+
+<!-- .element style="font-size: .4em" -->
+
 <small>* relatively heavy workload for single node server, not a good practise, but surely fun to experiment </small>
 
 ---
+
 ### Other fun options
-- server sent event
+- Server sent events
     - open channel from server, push data
     - like long polling in http/1
     - http/2 uses a single stream
-- server pushed streams 
+- Server pushed streams 
     - works nicely for non browser-clients
 - create proxy tunnels using connect
     - use one stream for multiple proxy connections
@@ -218,6 +229,9 @@ const server = createSecureServer(pem, (req, res) => {
 })
 server.listen(8083);
 ```
+
+<!-- .element style="font-size: .33em" -->
+
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->

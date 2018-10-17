@@ -30,9 +30,9 @@ The problem and the solution
 ---
 ### How do i use N-API
 - C based API built in NodeJS
-    - #include <node_api.h>
+    - `#include <node_api.h>`
 
-Examples:
+Examples:  
 https://github.com/nodejs/node/tree/master/test/addons-napi
 
 ---
@@ -59,7 +59,7 @@ N-API Hello World
 - Easy transition from NAN
 - Makes writing addons more easy
 - install addon node-addon-api
-    - #include <napi.h>
+    - `#include <napi.h>`
 
 Examples:
 https://github.com/nodejs/node-addon-examples 
