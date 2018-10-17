@@ -14,10 +14,10 @@
 N-API is
 - the next generation addon modules for Node JS
 - a stable Node API Layer for native modules
-- compile once run with diffrerent flavors of NodeJS without recompilations
+- compile once run with different flavors of NodeJS without recompilations
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 The problem and the solution
@@ -25,18 +25,18 @@ The problem and the solution
 ---
 ### Current Status
 - exited experimental March 14, 2018
-- backported to 6.x and 8.x
+- back ported to 6.x and 8.x
 
 ---
 ### How do i use N-API
 - C based API built in NodeJS
-    - #include <node_api.h>
+    - `#include <node_api.h>`
 
-Examples:
+Examples:  
 https://github.com/nodejs/node/tree/master/test/addons-napi
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 N-API Hello World
@@ -59,13 +59,13 @@ N-API Hello World
 - Easy transition from NAN
 - Makes writing addons more easy
 - install addon node-addon-api
-    - #include <napi.h>
+    - `#include <napi.h>`
 
 Examples:
 https://github.com/nodejs/node-addon-examples 
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 Node-addon-api Hello World

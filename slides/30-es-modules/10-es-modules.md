@@ -226,9 +226,9 @@ Only async because you cannot go from async to sync in JavaScript
 ### Migration hell coming!
 
 * Rename all js to mjs
-* Change require-s to imports
+* Change `require`s to imports
     * if CJS, then default imports
-* Change dynamic require-s to await import
+* Change dynamic `require`s to await import
     * Big problem!
 * Library developers need to support both!
     * TypeScript/Babel might help
