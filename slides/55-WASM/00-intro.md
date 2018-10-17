@@ -1,122 +1,115 @@
-# NodeJS and N-API
+# NodeJS and WASM
 
 ---
 ### Talk by
 - Jay Phelps, ThisDOT
-- Node Summit 2018 – WEBASSEMBLY DEMYSTIFIED: WHAT IT MEANS FOR NODE.JS 
+- Node Summit 2018  
+Webassembly demistified: What it means for Node.JS 
 - https://vimeo.com/287730898
 
 ---
 ### What is WASM
 - efficient low level bytecode (for the web)
 - fast to send over the internet, fast to compile and parse 
-- streaming compilation in browsers
-    - .wasm -> compile to machine code stream
-    - compile is faster then downloading the code
+
 <img src="./img/wasmstream.gif"/>
+<p style="font-size:8px">source:https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler</p>
 
 ---
 ### Efficient
-- Efficient, low level bytecode (instructions are bytes, binary thing)
-- mostly not written by hand, but as a compile target
----
-<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
-<!-- .slide: class="lab" -->
-## Demo time!
-The problem and the solution
+- efficient, low level bytecode
+- instructions are bytes, binary thing
+- mostly a compile target
+
+<img style="height:30vh" src="./img/wasmbytes.png"/>
 
 ---
-### Current Status
-- exited experimental March 14, 2018
-- back ported to 6.x and 8.x
-
----
-### How do i use N-API
-- C based API built in NodeJS
-    - `#include <node_api.h>`
-
-Examples:  
-https://github.com/nodejs/node/tree/master/test/addons-napi
+### Compile to WASM
+- Language compilers 
+    - C, C++, GO etc..
+- S-Expressions
+    - wabt (wat2wasm/wasm2wat)
 
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
-N-API Hello World
+Hello WASM
 
 ---
-### What about NAN?
-- C++ Addon technology
-- Needed a new approach
-- Nan is limited in isolation, still using underlying v8 types
-- node-addon-api is successor for NAN
-    
----
-### What is node-addon-api?
-- header only wrapper
-    - inline only
-    - Compiled into module
-    - Depends only on exported N-API functions
-- Delivered as npm module
-- Provides a C++ object model
-- Easy transition from NAN
-- Makes writing addons more easy
-- install addon node-addon-api
-    - `#include <napi.h>`
+### Is it going to kill JavaScript?
+nope, gives you option
+- javascript is a terrible compile target
 
-Examples:
-https://github.com/nodejs/node-addon-examples 
+<img style="height:20vh;border:1px solid black;" src="./img/array.jpg" />
 
 ---
-<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
-<!-- .slide: class="lab" -->
-## Demo time!
-Node-addon-api Hello World
+### Will we compile JS to WASM?
+- JS is extremely dynamic (prototypes ed)
+- JS to WASM would actually be slower
+- v1 MVP is best suited for c/c++ and Rust
+- other languages are already supported
+- more coming soon
+    - Go, .Net, Java, OCaml etc
 
 ---
-### Advanced concepts
-Object Wrap
-- ties JS object lifetime to C++ object instance
-Steps
-- extend ObjectWrap
-- define class
-- return constructor
-- create an instance/use from JS
-
-Example: 
-https://github.com/nodejs/node-addon-examples/tree/master/6_object_wrap/node-addon-api
-
+### When should you do it?
+- Heavily CPU bound number computations
 
 ---
-### Advanced concepts
-AsyncWorker
-- Create an instance and call Queue method
-- execute work in background thread
-    - no N-api code in execute
-    - set state on this
-- OnOk and OnError called upon completion on main thread
-    - return value from here
-
-
-Example: 
-https://github.com/nodejs/node-addon-examples/blob/4dc85d816e6a1ef641be416b5397e1813960b403/async_pi_estimate/node-addon-api/async.cc
+### You might use it already
+- example (sourcemap) mozilla used by Babel, Less, Firefox DevTools
+    - 10x speed improvement.
+- alternative to writing Native/NAPI addons 
+- KwonOJ -> ibsass-asm
+    - compile upon installment
+    - not portable to browser, WASM is.
+- lots of other libs that use WASM
+	
+---
+### NodeJS and WASM
+- U can use Node as a portable, sandboxed VM to run WASM code 		
+    - secure, no buffer overflow exploits 
 
 ---
-### Conversion NAN to node-addon-api
-- install node-addon-api
-- tools folder has conversion.js
-- 80% complete...
-- changes code in place, so backup
-
+### Step back to wasm binary code
+- can be intimidating
+- tooling eventually make it a non issue
+- can be in a textual representation
 
 ---
-### Call for action
-- Get involved
-    - documentation
-    - testing
-    - issue triage
-    - porting modules
+### learn WASM
+- stack machine language
+    - push / pop
+    - instructions are evaluated on a stack	
+        -example 1 + 2  (0x6a) -> i32.add
+- alternatively s-expressions (AST)
 
+---
+### Whats missing?
+- WASM has no system call access, only call into javascript
+- give WASM imports from JavaScript
+    - fileaccess, websockets.. etc
+- EMSCRIPTEN adds stdlib to WASM (compiles to WASM)
+- Garbage collection necessary for better interop
+    - you cant pass a JS object to WASM, 
+    - we need to have access to the V8 GC
+- Multi Threading
+    - Workers for now
+    - No messages passing but sharedarraybuffers
+        - browsers have it disabled
+        - maybe pthreads later, actual threads under the hood...
+- advancing very quickly
 
+---
+### Does WASM replace N-API? 
+- Nope to early what the effects are...
+		
+---
+### How do you get started?
+- webassembly.org
+- awesome WASM
+- supported in NodeJS starting v8.0.0 (older versions behing a flag)
+- Supported in all modern browsers...
 
-
+Revolution just beginning..

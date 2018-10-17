@@ -26,4 +26,7 @@ server.on('stream', (stream, headers) => {
     stream.end('Hello World!');
 });
 
-server.listen(3000);
+server.listen(8876);
+
+
+// NODE_DEBUG=http2

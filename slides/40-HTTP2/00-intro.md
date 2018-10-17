@@ -3,20 +3,24 @@
 ---
 ### Talk by
 - James Snell
-- Node Summit 2018 - HTTP/2 IN NODE.JS CORE
+- Node Summit 2018  
+HTTP/2 in Node.JS core
 - https://vimeo.com/287730172
 
----
-# <img src="./img/http2.jpg" />
 
 ---
 ### What is HTTP/2
 Key characteristics
+
+<img style="height:30vh" src="./img/http2.jpg" />
+
 - Binary Protocol
 - Multiplexing
+
+
 - Header Compression
-- Server Push
-<img src="./img/http2.jpg" />
+- Server Push  
+
 ---
 ### Hello HTTP/2
 ```js
@@ -54,6 +58,10 @@ server.on('stream', (stream, headers) => {
 server.listen(3000);
 ```
 
+```
+openssl req -new -out server.csr -keyout server.key
+```
+
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
@@ -61,14 +69,12 @@ server.listen(3000);
 http2 server
 
 ---
-### Usage 
-Useable now using
-- core apis
-- frameworks
-    - Fastify
-    - Restify
-    - Hapi
-    - more..
+### Useable now using 
+core apis or frameworks
+- Fastify
+- Restify
+- Hapi
+- more..
 
 ```
 npm install fastify/restify/hapi --save
@@ -81,42 +87,19 @@ npm install fastify/restify/hapi --save
 const fs      = require('fs')
 const path    = require('path')
 const fastify = require('fastify')({
-		http2: true, 
-		https: {
-			key: fs.readFileSync('server.key')
-			cert: fs.readFileSync('server.cert')
-		}
-	})	
+  http2: true, 
+    https: {
+    key: fs.readFileSync('server.key')
+    cert: fs.readFileSync('server.cert')
+  }
+})	
     
 fastify.get('/', function(request, reply){
 	reply.code(200, send( { hello:'world' })
 })
 fastify.listen(3000);
 ```
----
-### What about middleware
-How about reverse proxies to backend servers
-- http1 <-> http2 ?
-- http2 <-> http1 ?
 
-Most middleware, like NGINX, do not support http/2 from edge to backend server
-
----
-### Two options do work
-- nghttpx (part of nghttp2 distribution)
-- fastify-http-proxy
-
-```js
-const fastify = require('fastify')
-const server = fastify({http2:true})
-server.register(require('fastify-http-proxy'), {
-    upstream:'https://localhost:8888', 
-    prefix: '/', 	
-    http2:true
-})
-
-server.listen(8080)
-```
 
 ---
 ### Performance

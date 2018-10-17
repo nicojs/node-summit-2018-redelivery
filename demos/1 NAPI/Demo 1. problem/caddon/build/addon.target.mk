@@ -12,7 +12,8 @@ DEFS_Debug := \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
-	'-D_DEBUG'
+	'-D_DEBUG' \
+	'-DV8_ENABLE_CHECKS'
 
 # Flags passed to all source files.
 CFLAGS_Debug := \
@@ -31,7 +32,8 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-std=gnu++0x \
+	-std=gnu++1y \
+	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
 	-fno-threadsafe-statics \
@@ -44,13 +46,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/johngorter/.node-gyp/6.14.4/include/node \
-	-I/Users/johngorter/.node-gyp/6.14.4/src \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/openssl/config \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/openssl/openssl/include \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/uv/include \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/zlib \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/v8/include
+	-I/Users/johngorter/.node-gyp/10.7.0/include/node \
+	-I/Users/johngorter/.node-gyp/10.7.0/src \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/openssl/config \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/openssl/openssl/include \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/uv/include \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/zlib \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon' \
@@ -79,7 +81,8 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-std=gnu++0x \
+	-std=gnu++1y \
+	-stdlib=libc++ \
 	-fno-rtti \
 	-fno-exceptions \
 	-fno-threadsafe-statics \
@@ -92,13 +95,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/johngorter/.node-gyp/6.14.4/include/node \
-	-I/Users/johngorter/.node-gyp/6.14.4/src \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/openssl/config \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/openssl/openssl/include \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/uv/include \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/zlib \
-	-I/Users/johngorter/.node-gyp/6.14.4/deps/v8/include
+	-I/Users/johngorter/.node-gyp/10.7.0/include/node \
+	-I/Users/johngorter/.node-gyp/10.7.0/src \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/openssl/config \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/openssl/openssl/include \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/uv/include \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/zlib \
+	-I/Users/johngorter/.node-gyp/10.7.0/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/hello.o
@@ -135,7 +138,8 @@ LDFLAGS_Debug := \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
-	-L$(builddir)
+	-L$(builddir) \
+	-stdlib=libc++
 
 LIBTOOLFLAGS_Debug := \
 	-undefined dynamic_lookup \
@@ -148,7 +152,8 @@ LDFLAGS_Release := \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
-	-L$(builddir)
+	-L$(builddir) \
+	-stdlib=libc++
 
 LIBTOOLFLAGS_Release := \
 	-undefined dynamic_lookup \

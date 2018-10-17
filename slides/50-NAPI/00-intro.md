@@ -3,18 +3,21 @@
 ---
 ### Talk by
 - Michael Dawson, IBM
-- Node Summit 2018 - BUILDING NEXT GENERATION ADD-ON MODULES FOR NODE.JS USING N-API
+- Node Summit 2018  
+Building next generation add-on modules for Node.JS using N-Api
 - https://vimeo.com/287707522
 
 
 ---
 ### What is N-API
-- problem: recompile upon each version of the NodeJS platform
+Write c/c++ code to extend NodeJS
+- problem! recompile upon each NodeJS version
 
-N-API is
-- the next generation addon modules for Node JS
+---
+### N-API is
+- next generation addon modules for Node JS
 - a stable Node API Layer for native modules
-- compile once run with different flavors of NodeJS without recompilations
+- compile once run every NodeJS 
 
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
@@ -28,12 +31,14 @@ The problem and the solution
 - back ported to 6.x and 8.x
 
 ---
-### How do i use N-API
+### How do I use N-API
 - C based API built in NodeJS
-    - `#include <node_api.h>`
+```
+#include <node_api.h>
+```
 
-Examples:  
-https://github.com/nodejs/node/tree/master/test/addons-napi
+<p style="font-size:16px">
+Examples: https://github.com/nodejs/node/tree/master/test/addons-napi</p>
 
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
@@ -43,26 +48,22 @@ N-API Hello World
 
 ---
 ### What about NAN?
-- C++ Addon technology
-- Needed a new approach
-- Nan is limited in isolation, still using underlying v8 types
-- node-addon-api is successor for NAN
+- NAN is a C++ add on technology
+- NAN still uses underlying v8 types
+- node-addon-api is successor 
     
 ---
 ### What is node-addon-api?
-- header only wrapper
-    - inline only
-    - Compiled into module
-    - Depends only on exported N-API functions
-- Delivered as npm module
-- Provides a C++ object model
+- Header only wrapper as npm module
+- Provides C++ object model
 - Easy transition from NAN
-- Makes writing addons more easy
-- install addon node-addon-api
-    - `#include <napi.h>`
+- Install addon node-addon-api
 
-Examples:
-https://github.com/nodejs/node-addon-examples 
+```
+#include <napi.h>
+```
+<p style="font-size:16px">
+Examples:https://github.com/nodejs/node-addon-examples </p>
 
 ---
 <!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
@@ -72,31 +73,33 @@ Node-addon-api Hello World
 
 ---
 ### Advanced concepts
-Object Wrap
-- ties JS object lifetime to C++ object instance
+Object Wrap ties JS object lifetime to C++ object instance 
+
 Steps
 - extend ObjectWrap
 - define class
 - return constructor
 - create an instance/use from JS
 
-Example: 
-https://github.com/nodejs/node-addon-examples/tree/master/6_object_wrap/node-addon-api
+<p style="font-size:16px">
+Example:  https://github.com/nodejs/node-addon-examples/tree/master/6_object_wrap/node-addon-api</p>
 
 
 ---
 ### Advanced concepts
-AsyncWorker
-- Create an instance and call Queue method
+AsyncWorker creates background threaded worker  
+
+Steps 
+- create instance, call Queue()
 - execute work in background thread
     - no N-api code in execute
     - set state on this
-- OnOk and OnError called upon completion on main thread
+- OnOk() and OnError() on main thread
     - return value from here
 
-
+<p style="font-size:16px">
 Example: 
-https://github.com/nodejs/node-addon-examples/blob/4dc85d816e6a1ef641be416b5397e1813960b403/async_pi_estimate/node-addon-api/async.cc
+https://github.com/nodejs/node-addon-examples/blob/4dc85d816e6a1ef641be416b5397e1813960b403/async_pi_estimate/node-addon-api/async.cc</p>
 
 ---
 ### Conversion NAN to node-addon-api
