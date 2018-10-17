@@ -9,7 +9,7 @@
 - https://vimeo.com/287730172
 
 ---
-# <img src="./images/http2.jpg" />
+# <img src="./img/http2.jpg" />
 
 ---
 ### Hello HTTP/2
@@ -49,7 +49,7 @@ server.listen(3000);
 ```
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 http2 server
@@ -64,9 +64,12 @@ Useable now using
     - Hapi
     - more..
 
-> npm install fastify/restify/hapi --save
+```
+npm install fastify/restify/hapi --save
+```
 
 ---
+
 ### Usage in Fastify
 ```js
 const fs      = require('fs')
@@ -216,7 +219,7 @@ const server = createSecureServer(pem, (req, res) => {
 server.listen(8083);
 ```
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 http2 server sent events
@@ -237,7 +240,7 @@ req.resume()
 ```
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 server push streams
@@ -254,7 +257,7 @@ server push streams
 - node trace-event-categories node.async_hooks
 
 ---
-<!-- .slide: data-background="url('images/demo.jpg')" data-background-size="cover" --> 
+<!-- .slide: data-background="url('/img/demo.jpg')" data-background-size="cover" --> 
 <!-- .slide: class="lab" -->
 ## Demo time!
 Setting environment variables
